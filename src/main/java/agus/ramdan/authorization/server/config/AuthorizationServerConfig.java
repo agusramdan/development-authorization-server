@@ -57,7 +57,10 @@ public class AuthorizationServerConfig {
 	}
 
 	@Bean
-	public AuthorizationServerSettings authorizationServerSettings() {
-		return AuthorizationServerSettings.builder().build();
+	public AuthorizationServerSettings authorizationServerSettings(AuthorizationServerProperties properties) {
+		return AuthorizationServerSettings.builder()
+				.issuer(properties.getIssuer())
+				.build();
 	}
+
 }

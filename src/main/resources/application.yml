@@ -1,6 +1,10 @@
 server:
   port: 9000
 
+authorization:
+  server:
+    issuer: http://merahputih-id.tech:9000
+
 logging:
   level:
     root: INFO
