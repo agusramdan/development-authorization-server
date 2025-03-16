@@ -100,12 +100,12 @@ public class DevelopmentDataConfig {
 				.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
 				.authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
 				.authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-				.redirectUri("http://127.0.0.1:8080/login/oauth2/code/messaging-client-oidc")
-				.redirectUri("http://127.0.0.1:8080/authorized")
+				.redirectUri("http://merahputih-id.tech:3000/login/oauth2/code/messaging-client-oidc")
+				.redirectUri("http://merahputih-id.tech:3000/authorized")
 				.scope(OidcScopes.OPENID)
 				.scope(OidcScopes.PROFILE)
-				.scope("read")
-				.scope("write")
+				.scope("web.internal.read")
+				.scope("web.internal.write")
 				.clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
 				.build());
 
@@ -199,6 +199,24 @@ public class DevelopmentDataConfig {
 				.scope("odoo.write")
 				.clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
 				.build());
+
+		list.add(RegisteredClient.withId(UUID.randomUUID().toString())
+				.clientId("client-internal-local-web")
+				.clientSecret("{noop}secret-local-4")
+				.clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+				.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+				.authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+				.authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+				.redirectUri("http://127.0.0.1:8080/login/oauth2/code/messaging-client-oidc")
+				.redirectUri("http://127.0.0.1:8080/authorized")
+				.scope(OidcScopes.OPENID)
+				.scope(OidcScopes.PROFILE)
+				.scope("web.internal.read")
+				.scope("web.internal.write")
+				.clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
+				.build());
+
+
 		JdbcRegisteredClientRepository registeredClientRepository = new JdbcRegisteredClientRepository(jdbcTemplate);
 		list.forEach(registeredClientRepository::save);
 		return registeredClientRepository;
@@ -222,6 +240,10 @@ public class DevelopmentDataConfig {
 				.username("admin")
 				.password("password")
 				.roles("INTERNAL_ADMIN")
+				.authorities("SCOPE_admin.internal.read")
+				.authorities("SCOPE_admin.internal.create")
+				.authorities("SCOPE_admin.internal.update")
+				.authorities("SCOPE_admin.internal.delete")
 				.build());
 		list.add(User.withDefaultPasswordEncoder()
 				.username("user")
@@ -248,6 +270,8 @@ public class DevelopmentDataConfig {
 				.password("password")
 				.roles("USER_SUPPLIER")
 				.build());
+
+
 //		val usersJdbcDao = new JdbcDaoImpl();
 //		usersJdbcDao.setJdbcTemplate(jdbcTemplate);
 //		usersJdbcDao.setRolePrefix("ROLE_");
