@@ -12,7 +12,7 @@
   </parent>
   <groupId>agus.ramdan</groupId>
   <artifactId>development-authorization-server</artifactId>
-  <version>2.7.18.0.4.5.1.202503111</version>
+  <version>2.7.18.0.4.5.1.202503112</version>
   <packaging>jar</packaging>
 
   <properties>
