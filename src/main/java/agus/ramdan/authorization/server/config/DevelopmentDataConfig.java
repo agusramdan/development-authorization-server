@@ -202,7 +202,7 @@ public class DevelopmentDataConfig {
 
 		list.add(RegisteredClient.withId(UUID.randomUUID().toString())
 				.clientId("client-internal-local-web")
-				.clientSecret("{noop}secret-local-4")
+				.clientSecret("{noop}secretlocal4")
 				.clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
 				.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
 				.authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
