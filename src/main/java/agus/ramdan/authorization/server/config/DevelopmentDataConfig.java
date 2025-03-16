@@ -105,7 +105,9 @@ public class DevelopmentDataConfig {
 				.scope(OidcScopes.OPENID)
 				.scope(OidcScopes.PROFILE)
 				.scope("web.internal.read")
-				.scope("web.internal.write")
+				.scope("web.internal.create")
+				.scope("web.internal.update")
+				.scope("web.internal.delete")
 				.clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
 				.build());
 
@@ -216,7 +218,9 @@ public class DevelopmentDataConfig {
 				.scope(OidcScopes.PROFILE)
 				.scope(OidcScopes.EMAIL)
 				.scope("web.internal.read")
-				.scope("web.internal.write")
+				.scope("web.internal.create")
+				.scope("web.internal.update")
+				.scope("web.internal.delete")
 				.clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
 				.build());
 
